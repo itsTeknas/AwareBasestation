@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "730714787996",
+    "firebase_url": "https://aware-teknas.firebaseio.com",
+    "project_id": "aware-teknas",
+    "storage_bucket": "aware-teknas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730714787996:android:32240fa82a09f57f",
+        "android_client_info": {
+          "package_name": "com.blackcurrantapps.awarebasestation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730714787996-rj5af27l9cg60nrhb4lrldrdojupmcjp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blackcurrantapps.awarebasestation",
+            "certificate_hash": "6B62692551DAFF4FCA2E1D216AF8BB7F8F16EA18"
+          }
+        },
+        {
+          "client_id": "730714787996-obfvjbu7kq8todftaqrkcbh76q3hmogo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsiT0absBJLy81dTPMh4137HSzqVuIsWs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730714787996-obfvjbu7kq8todftaqrkcbh76q3hmogo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
