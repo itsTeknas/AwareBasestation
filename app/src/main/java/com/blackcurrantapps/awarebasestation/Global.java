@@ -9,9 +9,12 @@ import android.support.multidex.MultiDexApplication;
 
 public class Global extends MultiDexApplication {
 
+
+
     @Override
     public void onCreate() {
         super.onCreate();
+
     }
 
 }
