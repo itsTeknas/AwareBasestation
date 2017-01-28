@@ -1,8 +1,14 @@
 package com.blackcurrantapps.awarebasestation.activities;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,6 +34,16 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int PERMISSIONS_REQUEST = 7777;
+
+    private static final String[] permissions = {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.WAKE_LOCK
+    };
+
     @BindView(R.id.activity_main)
     RelativeLayout activityMain;
     @BindView(R.id.listView)
@@ -44,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         getSupportActionBar().setTitle("Select Base Station");
+
+        if (!areAllPermissionsGiven()) {
+            new AlertDialog.Builder(this).setTitle("Permissions")
+                    .setMessage("Please accept all permissions for the app to work properly")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            requestPermissions();
+                        }
+                    }).create().show();
+        }
     }
 
     @Override
@@ -87,5 +114,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(MainActivity.this, permissions, PERMISSIONS_REQUEST);
+    }
+
+    private boolean areAllPermissionsGiven() {
+        boolean denied = false;
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this, permission) != PackageManager.PERMISSION_GRANTED) {
+                denied = true;
+            }
+        }
+        return !denied;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST: {
+                if (!areAllPermissionsGiven()) {
+                    requestPermissions();
+                }
+            }
+        }
+    }
 
 }
