@@ -77,7 +77,7 @@ public class BaseStationActivity extends AppCompatActivity {
             }
         }
 
-        getSupportActionBar().setTitle("Base Station : " + rideKey);
+        getSupportActionBar().setTitle("Base Station : " + rideName);
 
         mHandler = new Handler();
 
@@ -205,6 +205,7 @@ public class BaseStationActivity extends AppCompatActivity {
             macIdRef.child(mac).child("nearest_base_station_key").setValue(rideKey);
             macIdRef.child(mac).child("nearest_base_station_name").setValue(rideName);
             macIdRef.child(mac).child("update_timestamp").setValue(System.currentTimeMillis());
+            macIdRef.child(mac).child("visits").child(rideKey).setValue(1);
         }
 
         mref.child("nearby_devices").addListenerForSingleValueEvent(new ValueEventListener() {

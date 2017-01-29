@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Iterable<DataSnapshot> rides = dataSnapshot.getChildren();
 
+                        names = new ArrayList<String>();
+                        keys = new ArrayList<String>();
                         for (DataSnapshot ride:rides){
                             names.add((String) ride.child("name").getValue());
                             keys.add((String) ride.child("key").getValue());
